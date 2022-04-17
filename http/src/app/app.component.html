@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Angular HttpClient</h1>
+
+  <div class="card">
+    <div class="form-control">
+      <input type="text" placeholder="Название" [(ngModel)]="todoTitle" >
+    </div>
+    <button class="btn" (click)="addTodo()">Добавить</button>
+    <button class="btn" (click)="fetchTodos()">Загрузить</button>
+  </div>
+
+  <hr>
+
+  <p *ngIf="error; else TodoBlock" class="error">{{error}}</p>
+
+  <ng-template #TodoBlock>
+    <div *ngIf="!loading; else loader">
+      <div *ngIf="todos.length; else emptyList">
+        <div class="card" *ngFor="let todo of todos">
+          <p>
+            <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
+            <span>
+              <button class="btn btn-danger" (click)="removeTodo(todo)">Удалить</button>
+              <button class="btn" [disabled]="todo.completed" (click)="completeTodo(todo)">Завершить</button>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #loader>
+    <div class="loaderPosition">
+      <div class="lds-default">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #emptyList>
+    No todos available for now.
+  </ng-template>
+</div>

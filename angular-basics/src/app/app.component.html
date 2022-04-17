@@ -1,0 +1,63 @@
+<nav class="navbar p-3" style="background-color: #1d3557;">
+  <h1 class="text-white">Angular Course</h1>
+</nav>
+
+<div class="container custom">
+  <h1 class="my-5">Post Application</h1>
+
+  <div *ngIf="posts.length">
+    <h2>Statistics</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Total Posts</th>
+          <th scope="col">Short Posts</th>
+          <th scope="col">Long Posts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{posts.length}}</td>
+          <td>{{shorts}}</td>
+          <td>{{longs}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="my-5">
+    <h2>Add a post</h2>
+    <post-form (onFormSubmit)="handleSubmit($event)"></post-form>
+  </div>
+
+  <hr>
+
+  <div class="my-5" *ngIf="posts.length">
+  <h2>Filter the posts</h2>
+  <select class="form-select" aria-label="Default select example">
+    <option selected>Filter the posts by length</option>
+    <option value="1">All</option>
+    <option value="2">Short Posts</option>
+    <option value="3">Long Posts</option>
+  </select>
+  </div>
+
+
+
+
+  <div class="post-container">
+     <post *ngFor="let post of posts" [post]="post" (onPostDelete)="deletePost($event)"></post>
+     <div *ngIf="posts.length === 0" class="text-center fs-4">
+       No posts available!
+     </div>
+  </div>
+</div>
+
+
+<footer class="bg-light text-center text-white mt-5">
+  <div class="text-center p-3" style="background-color: #1d3557;">
+    © 2022 Copyright:
+    <a class="text-white" href="#">WebX</a>
+  </div>
+  <!-- Copyright -->
+</footer>

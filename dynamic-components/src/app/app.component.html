@@ -1,0 +1,26 @@
+<nav class="navbar navbar-dark bg-dark px-4">
+  <a class="navbar-brand" href="#">Angular Dynamic Components</a>
+</nav>
+
+<div class="container py-5 w-50">
+  <div class="card">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Sample Card</h5>
+      <p class="card-text">Some wonderfull text here!</p>
+      <!-- First option -->
+      <!-- <a href="#" class="btn btn-primary" (click)="modal=true">Show modal</a>
+      <app-modal 
+      *ngIf="modal"
+      title="My custom title" 
+      (close)="modal=false"></app-modal> -->
+
+      <!-- Dynamic option -->
+      <a href="#" class="btn btn-primary" (click)="showModal()">Show modal</a>
+    </div>
+  </div>
+</div>
+
+<ng-template appRef></ng-template>

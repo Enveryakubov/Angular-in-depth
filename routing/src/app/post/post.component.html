@@ -1,0 +1,9 @@
+<div *ngIf="post">
+  <button class="btn" (click)="goBack()">Back</button>
+
+  <h1>{{post.title}}</h1>
+
+  <p>{{post.text}}</p>
+
+  <button class="btn btn-danger" (click)="loadPost4()">Load 4 post</button>
+</div>
